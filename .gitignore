@@ -1,0 +1,15 @@
+# dependencies
+node_modules/
+
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+
+# macOS
+.DS_Store
+*.pem
+
+# local env files
+.env*.local
