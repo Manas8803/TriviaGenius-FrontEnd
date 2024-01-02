@@ -31,7 +31,7 @@ export async function action({ request }) {
 		return { status, msg, statusText };
 	}
 	//* You need to set this as dynamic, it should navigate the user to the page they came from.
-	return redirect("/after-login");
+	return redirect("/home");
 }
 
 export function Register() {
