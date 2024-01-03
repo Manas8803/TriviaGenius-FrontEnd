@@ -15,19 +15,15 @@ export async function isLoggedIn(request) {
 	}
 }
 
-//! CHANGE THIS AFTER GETTING DEPLOYED LINK
 export async function loginUser(user) {
-	const { data } = await axios.post(`${baseUrl}/Auth/Login`, user);
+	const { data } = await axios.post(`${baseUrl}/Auth/Login/`, user);
 	const { token } = data;
 
-	localStorage.setItem("token", token); //! SET Token to token(variable) here.
-	return data; //! RETURN DATA(Variable)
+	localStorage.setItem("token", token);
+	return data;
 }
 
 export async function registerUser(user) {
-	const { data } = await axios.post(`${baseUrl}/Auth/Register`, user);
-	const { token } = data;
-	localStorage.setItem("token", token); //! SET Token to token(variable) here.
-	return data; //! RETURN DATA(Variable)
+	const { data } = await axios.post(`${baseUrl}/Auth/Register/`, user);
+	return data;
 }
-//!
