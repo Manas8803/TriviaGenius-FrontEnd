@@ -10,23 +10,32 @@ import {
 import "./App.css";
 
 //* Components :
+import Layout from "./layout/Layout";
+import Home, { homeLoader } from "./pages/Home/home";
 import Landing from "./pages/Landing/landing";
-import Home from "./pages/Home/home";
-import { Login, action as loginAction } from "./pages/Login-Register/login";
+import {
+	Login,
+	action as loginAction,
+	loginLoader,
+} from "./pages/Login-Register/login";
 import {
 	Register,
 	action as registerAction,
 } from "./pages/Login-Register/register";
-import Layout from "./layout/Layout";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
 		<>
 			<Route path="/" element={<Landing />} />
-			<Route path="/login" element={<Login />} action={loginAction} />
+			<Route
+				path="/login"
+				element={<Login />}
+				action={loginAction}
+				loader={loginLoader}
+			/>
 			<Route path="/register" element={<Register />} action={registerAction} />
 			<Route path="/home" element={<Layout />}>
-				<Route index element={<Home />} />
+				<Route index element={<Home />} loader={homeLoader} />
 			</Route>
 		</>
 	)

@@ -28,7 +28,12 @@
 	justify-content: center;
 	align-items: center;
 }
-.container {
+
+.red {
+	font-weight: 500;
+	color: red;
+}
+.container1 {
 	border-radius: 10px;
 	height: 60vh;
 	color: #ffffff;
