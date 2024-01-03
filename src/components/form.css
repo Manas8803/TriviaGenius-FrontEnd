@@ -1,17 +1,17 @@
 .login-form {
 	display: flex;
 	flex-direction: column;
-	width: 75%;
+	width: 85%;
 }
 
 .inputF {
-	background-color: #262626;
+	background-color: #3c3b3b;
 	border-radius: 5px;
-	border-color: #4d4d4d;
 	margin-bottom: 20px;
 	height: 5vh;
 	padding: 4px 8px;
 	color: #ffffff;
+	border: 1px solid #7a7a7a;
 }
 .inputF::placeholder {
 	color: #ffffff;
@@ -27,6 +27,7 @@ button {
 	border-radius: 4px;
 	cursor: pointer;
 	transition: background-color 0.3s ease;
+	letter-spacing: 2px;
 }
 
 button:disabled {

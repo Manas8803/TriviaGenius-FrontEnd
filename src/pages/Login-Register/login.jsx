@@ -28,13 +28,12 @@ export async function action({ request }) {
 		await loginUser(user);
 	} catch (error) {
 		console.log(error);
-		// const {
-		// 	status,
-		// 	statusText,
-		// 	data: { msg: msg },
-		// } = error.response;
+		const {
+			status,
+			data: { message: message },
+		} = error.response;
 
-		return "status";
+		return { status, message };
 	}
 
 	return redirect(`${path}`);
@@ -56,7 +55,7 @@ export function Login() {
 		<div className="box">
 			<div className="container1">
 				<div className="login-container">
-					<h1>Login</h1>
+					<h1>Access your account </h1>
 					{message &&
 						(message.startsWith("You") ? (
 							<h3
@@ -74,18 +73,15 @@ export function Login() {
 							</h3>
 						))}
 					{errMsg && (
-						<div>
+						<div
+							style={{ padding: "0", marginTop: "0", marginBottom: "1.5rem" }}
+						>
 							{errMsg.statusText && (
 								<span>
 									<strong>{errMsg.statusText}</strong> :{" "}
 								</span>
 							)}
-							<span>{errMsg.msg}</span>
-							{errMsg.status && (
-								<pre>
-									<strong>Status Code</strong> : {errMsg.status}
-								</pre>
-							)}
+							<span className="red1">{errMsg.message}!!</span>
 						</div>
 					)}
 					<LoginForm loginOrRegister={"Login"} status={status} />

@@ -24,9 +24,12 @@ export async function action({ request }) {
 		await registerUser(user);
 	} catch (error) {
 		console.log(error);
-		const msg = error.config.data;
+		const {
+			status,
+			data: { message: message },
+		} = error.response;
 
-		return { msg };
+		return { message, status };
 	}
 
 	return redirect(
@@ -52,7 +55,7 @@ export function Register() {
 					<img src={img} className="img" alt="To be loaded" />
 				</div>
 				<div className="login-container">
-					<h1>Register</h1>
+					<h1>Create Account</h1>
 					{errMsg && (
 						<div>
 							{errMsg.statusText && (
