@@ -5,11 +5,12 @@ import {
 	useNavigate,
 	useNavigation,
 } from "react-router-dom";
+import "./register.css";
 
 import { useEffect } from "react";
 import { isLoggedIn, registerUser } from "../../utils/Auth";
 import LoginForm from "../../components/form";
-
+import img from "../../assets/Images/Signup.jpg";
 export async function action({ request }) {
 	const data = await request.formData();
 	const user = {
@@ -46,21 +47,33 @@ export function Register() {
 
 	const message = useActionData();
 	return (
-		<div className="login-container">
-			<h1>Register</h1>
-			{message && (
-				<div>
-					<span>
-						<strong>{message.statusText}</strong> :{" "}
-					</span>
-					<span>{message.msg}</span>
-					<pre>
-						<strong>Status Code</strong> : {message.status}
-					</pre>
+		<div className="box">
+			<div className="container">
+				<div className="img-c">
+					<img src={img} className="img" alt="To be loaded" />
 				</div>
-			)}
-			<LoginForm loginOrRegister={"Register"} status={status} />
-			<Link to="/login">Already have an account?</Link>
+				<div className="login-container">
+					<h1>Register</h1>
+					{message && (
+						<div>
+							<span>
+								<strong>{message.statusText}</strong> :{" "}
+							</span>
+							<span>{message.msg}</span>
+							<pre>
+								<strong>Status Code</strong> : {message.status}
+							</pre>
+						</div>
+					)}
+					<LoginForm loginOrRegister={"Register"} status={status} />
+					<div>
+						<span className="text">Already have an account? </span>
+						<Link to="/register">
+							<strong style={{ textDecoration: "underline" }}>Sign in</strong>
+						</Link>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 }

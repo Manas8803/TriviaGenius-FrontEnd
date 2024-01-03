@@ -1,0 +1,35 @@
+.login-form {
+	display: flex;
+	flex-direction: column;
+	width: 75%;
+}
+
+.inputF {
+	background-color: #262626;
+	border-radius: 5px;
+	border-color: #4d4d4d;
+	margin-bottom: 20px;
+	height: 5vh;
+	padding: 4px 8px;
+	color: #ffffff;
+}
+.inputF::placeholder {
+	color: #ffffff;
+	padding: 0 0px;
+}
+
+button {
+	padding: 10px;
+	margin-bottom: 20px;
+	background-color: #2c68ff;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+button:disabled {
+	background-color: #ccc;
+	cursor: not-allowed;
+}
