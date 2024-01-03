@@ -29,7 +29,9 @@ export async function action({ request }) {
 		return { msg };
 	}
 
-	return redirect("/home");
+	return redirect(
+		"/login?message=Please login with your username and password"
+	);
 }
 
 export function Register() {

@@ -3,6 +3,7 @@ import Footer from "./footer";
 import Header from "./header";
 import Features from "./sections/features";
 import Hero from "./sections/hero";
+import "../../styles/tailwind.css";
 import SampleQuiz from "./sections/sample-quiz";
 
 export default function Landing() {

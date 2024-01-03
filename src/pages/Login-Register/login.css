@@ -33,6 +33,10 @@
 	font-weight: 500;
 	color: red;
 }
+.green {
+	font-weight: 500;
+	color: rgb(55, 177, 55);
+}
 .container1 {
 	border-radius: 10px;
 	height: 60vh;

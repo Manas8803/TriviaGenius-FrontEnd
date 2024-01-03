@@ -57,14 +57,22 @@ export function Login() {
 			<div className="container1">
 				<div className="login-container">
 					<h1>Login</h1>
-					{message && (
-						<h3
-							style={{ padding: "0", marginTop: "0", marginBottom: "1rem" }}
-							className="red"
-						>
-							{message}
-						</h3>
-					)}
+					{message &&
+						(message.startsWith("You") ? (
+							<h3
+								style={{ padding: "0", marginTop: "0", marginBottom: "1rem" }}
+								className="red"
+							>
+								{message}
+							</h3>
+						) : (
+							<h3
+								style={{ padding: "0", marginTop: "0", marginBottom: "1rem" }}
+								className="green"
+							>
+								{message}
+							</h3>
+						))}
 					{errMsg && (
 						<div>
 							{errMsg.statusText && (
