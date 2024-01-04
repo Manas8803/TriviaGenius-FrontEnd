@@ -1,9 +1,9 @@
 //* Library :
 import {
-	Route,
-	RouterProvider,
-	createBrowserRouter,
-	createRoutesFromElements,
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
 } from "react-router-dom";
 
 //* CSS :
@@ -17,41 +17,43 @@ import Layout from "./layout/Layout";
 import Home, { homeLoader } from "./pages/Home/home";
 import Landing from "./pages/Landing/landing";
 import {
-	Login,
-	action as loginAction,
-	loginLoader,
+  Login,
+  action as loginAction,
+  loginLoader,
 } from "./pages/Login-Register/login";
 import {
-	Register,
-	action as registerAction,
+  Register,
+  action as registerAction,
 } from "./pages/Login-Register/register";
 import GenQuiz, { loader as genQuizLoader } from "./pages/Gen-Quiz/genquiz";
 import PlayQuiz, {
-	loader as playQuizLoader,
+  loader as playQuizLoader,
 } from "./pages/Play-Quiz/play-quiz";
+import Result from "./pages/Result/result";
 
 const router = createBrowserRouter(
-	createRoutesFromElements(
-		<>
-			<Route path="/" element={<Landing />} />
-			<Route
-				path="/login"
-				element={<Login />}
-				action={loginAction}
-				loader={loginLoader}
-			/>
-			<Route path="/register" element={<Register />} action={registerAction} />
-			<Route path="/home" element={<Layout />}>
-				<Route index element={<Home />} loader={homeLoader} />
-				<Route path="gen-quiz" element={<GenQuiz />} loader={genQuizLoader} />
-				<Route
-					path="play-quiz"
-					element={<PlayQuiz />}
-					loader={playQuizLoader}
-				/>
-			</Route>
-		</>
-	)
+  createRoutesFromElements(
+    <>
+      <Route path="/" element={<Landing />} />
+      <Route
+        path="/login"
+        element={<Login />}
+        action={loginAction}
+        loader={loginLoader}
+      />
+      <Route path="/register" element={<Register />} action={registerAction} />
+      <Route path="/home" element={<Layout />}>
+        <Route index element={<Home />} loader={homeLoader} />
+        <Route path="gen-quiz" element={<GenQuiz />} loader={genQuizLoader} />
+        <Route
+          path="play-quiz"
+          element={<PlayQuiz />}
+          loader={playQuizLoader}
+        />
+        <Route path="result" element={<Result />} />
+      </Route>
+    </>
+  )
 );
 
 function App() {
