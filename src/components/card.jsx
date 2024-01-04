@@ -14,10 +14,15 @@ export default function Card({ question, qCounter, handleNextQuestion }) {
 		radioButtons.forEach((button) => (button.checked = false));
 
 		//* Increment on correct answer
-		if (selectedAnswer === correctAnswer) {
+		if (correctAnswer.includes(selectedAnswer)) {
 			const correctAnswersCount =
 				parseInt(sessionStorage.getItem("correctAnswersCount")) || 0;
 			sessionStorage.setItem("correctAnswersCount", correctAnswersCount + 1);
+		}
+		if (selectedAnswer == undefined || !selectedAnswer) {
+			const unAnswersCount =
+				parseInt(sessionStorage.getItem("unAnswersCount")) || 0;
+			sessionStorage.setItem("unAnswersCount", unAnswersCount + 1);
 		}
 		handleNextQuestion();
 	};
@@ -30,66 +35,9 @@ export default function Card({ question, qCounter, handleNextQuestion }) {
 					<p className="mt-2 text-gray-600">{ques}</p>
 				</div>
 				<form className="space-y-4">
-					<div className="flex items-center">
-						<input
-							className="mr-2"
-							id="option1"
-							name="answer"
-							type="radio"
-							value={options[0]}
-						/>
-						<label
-							className="w-full py-2 px-4 border border-gray-300 rounded-md text-left"
-							htmlFor="option1"
-						>
-							{options[0]}
-						</label>
-					</div>
-					<div className="flex items-center">
-						<input
-							className="mr-2"
-							id="option2"
-							name="answer"
-							type="radio"
-							value={options[1]}
-						/>
-						<label
-							className="w-full py-2 px-4 border border-gray-300 rounded-md text-left"
-							htmlFor="option2"
-						>
-							{options[1]}
-						</label>
-					</div>
-					<div className="flex items-center">
-						<input
-							className="mr-2"
-							id="option3"
-							name="answer"
-							type="radio"
-							value={options[2]}
-						/>
-						<label
-							className="w-full py-2 px-4 border border-gray-300 rounded-md text-left"
-							htmlFor="option3"
-						>
-							{options[2]}
-						</label>
-					</div>
-					<div className="flex items-center">
-						<input
-							className="mr-2"
-							id="option4"
-							name="answer"
-							type="radio"
-							value={options[3]}
-						/>
-						<label
-							className="w-full py-2 px-4 border border-gray-300 rounded-md text-left"
-							htmlFor="option4"
-						>
-							{options[3]}
-						</label>
-					</div>
+					{options.map((option, index) => (
+						<Option key={index} option={option} />
+					))}
 				</form>
 				<div className="mt-8">
 					<p className="mt-2 text-sm text-gray-500">
@@ -106,5 +54,25 @@ export default function Card({ question, qCounter, handleNextQuestion }) {
 				</div>
 			</div>
 		</main>
+	);
+}
+
+function Option({ option }) {
+	return (
+		<div className="flex items-center">
+			<input
+				className="mr-2"
+				id="option1"
+				name="answer"
+				type="radio"
+				value={option}
+			/>
+			<label
+				className="w-full py-2 px-4 border border-gray-300 rounded-md text-left"
+				htmlFor="option1"
+			>
+				{option}
+			</label>
+		</div>
 	);
 }

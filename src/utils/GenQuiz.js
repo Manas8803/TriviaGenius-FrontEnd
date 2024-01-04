@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "https://dae5-59-96-107-31.ngrok-free.app";
+const baseUrl = "https://trivia-bckend.onrender.com";
 export async function genQuiz(file) {
 	const formData = new FormData();
 	formData.append("pdfFile", file);
@@ -11,12 +11,10 @@ export async function genQuiz(file) {
 		},
 	};
 
-	console.log("Fetching.....");
 	const data = axios
 		.post(`${baseUrl}/api/v1/ai`, formData, axiosConfig)
 		.then((response) => response.data)
 		.catch((error) => console.log("Error:", error));
 
-	console.log(data);
 	return data;
 }

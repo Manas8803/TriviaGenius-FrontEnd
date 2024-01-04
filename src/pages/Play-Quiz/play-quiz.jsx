@@ -7,6 +7,8 @@ import { genQuiz } from "../../utils/GenQuiz";
 
 export async function loader(url) {
 	await isLoggedIn(url.request);
+	sessionStorage.setItem("correctAnswersCount", 0);
+	sessionStorage.setItem("unAnswersCount", 0);
 	return "";
 }
 
@@ -78,7 +80,7 @@ export default function PlayQuiz() {
 				);
 			} else {
 				//! Handle end of quiz : NAVIGATE TO RESULTS PAGE
-				return navigate(-1);
+				return navigate("/home/result");
 			}
 		}
 	}
