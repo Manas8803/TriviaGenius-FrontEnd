@@ -9,6 +9,9 @@ import {
 //* CSS :
 import "./App.css";
 
+//* FileContext :
+import { FileProvider } from "./FileContext";
+
 //* Components :
 import Layout from "./layout/Layout";
 import Home, { homeLoader } from "./pages/Home/home";
@@ -52,7 +55,11 @@ const router = createBrowserRouter(
 );
 
 function App() {
-	return <RouterProvider router={router} />;
+	return (
+		<FileProvider>
+			<RouterProvider router={router} />
+		</FileProvider>
+	);
 }
 
 export default App;

@@ -1,4 +1,22 @@
+import axios from "axios";
+
+const baseUrl = "https://dae5-59-96-107-31.ngrok-free.app";
 export async function genQuiz(file) {
-	//& API CALL
-	return "1. What is the stock market?\n\nA. A platform for companies to raise capital by issuing bonds\nB. A centralized location where stocks are bought and sold\nC. A system for trading commodities like wheat and oil\nD. A network of banks that facilitates financial transactions\n\nAnswer: B. A centralized location where stocks are bought and sold\n\n\n2. How do companies raise capital through the stock market?\n\nA. By issuing stocks\nB. By selling bonds\nC. By taking out loans from banks\nD. By selling their assets\n\nAnswer: A. By issuing stocks\n\n\n3. What determines the price of a stock?\n\nA. The company's financial performance\nB. The supply and demand for the stock\nC. The economic indicators\nD. All of the above\n\nAnswer: D. All of the above\n\n\n4. What is the role of investors in the stock market?\n\nA. To buy and sell stocks\nB. To provide capital to companies\nC. To analyze financial data\nD. All of the above\n\nAnswer: D. All of the above\n\n\n5. What are some strategies employed by investors in the stock market?\n\nA. Value investing\nB. Technical analysis\nC. Diversification\nD. All of the above\n\nAnswer: D. All of the above\n\n\n6. Who participates in the stock market?\n\nA. Individual investors\nB. Institutional investors\nC. Traders\nD. All of the above\n\nAnswer: D. All of the above\n\n\n7. What is the significance of stock market indices like the Dow Jones Industrial Average?\n\nA. They reflect the overall health of the financial markets\nB. They are used as benchmarks to assess economic trends\nC. They provide information about individual stock performances\nD. All of the above\n\nAnswer: B. They are used as benchmarks to assess economic trends\n\n\n8. What is the relationship between the stock market and the economy?\n\nA. The stock market is a barometer of economic health\nB. The stock market influences consumer confidence\nC. The stock market affects corporate behavior\nD. All of the above\n\nAnswer: D. All of the above\n\n\n9. What is the impact of the stock market on wealth creation?\n\nA. It provides opportunities for investors to generate profits\nB. It facilitates capital allocation to businesses\nC. It contributes to economic development\nD. All of the above\n\nAnswer: D. All of the above\n\n\n10. What is the overall role of the stock market in the global financial landscape?\n\nA. It facilitates wealth creation\nB. It promotes economic development\nC. It influences investment strategies\nD. All of the above\n\nAnswer: D. All of the above";
+	const formData = new FormData();
+	formData.append("pdfFile", file);
+
+	const axiosConfig = {
+		headers: {
+			"Content-Type": "multipart/form-data",
+		},
+	};
+
+	console.log("Fetching.....");
+	const data = axios
+		.post(`${baseUrl}/api/v1/ai`, formData, axiosConfig)
+		.then((response) => response.data)
+		.catch((error) => console.log("Error:", error));
+
+	console.log(data);
+	return data;
 }
