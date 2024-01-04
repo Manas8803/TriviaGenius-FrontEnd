@@ -26,7 +26,7 @@ export default function LoginForm({ status, loginOrRegister }) {
 					<input
 						type="text"
 						name="username"
-						placeholder="Full Name"
+						placeholder="UserName"
 						className="inputF"
 					/>
 					<input

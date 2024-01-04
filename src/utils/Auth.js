@@ -1,7 +1,6 @@
 import axios from "axios";
 import { redirect } from "react-router-dom";
 
-//! Deployed Auth Service URL :
 const baseUrl = "https://triviageniusauth.onrender.com";
 
 export async function isLoggedIn(request) {
