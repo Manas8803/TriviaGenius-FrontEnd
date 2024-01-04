@@ -1,18 +1,23 @@
-/**
- * v0 by Vercel.
- * @see https://v0.dev/t/BcDZRiJx4ra
- */
-import { Link } from "react-router-dom";
-
-// Your GenQuiz component
-
-import React from "react";
+import { redirect, useNavigate } from "react-router";
 import FileUploadButton from "./button";
+import { isLoggedIn } from "../../utils/Auth";
+import UploadIcon from "../../components/upload-icon";
+
+export async function loader({ request }) {
+	await isLoggedIn(request);
+	return "";
+}
 
 export default function GenQuiz() {
+	const navigate = useNavigate();
 	const handleFileUpload = (file) => {
-		// Perform any logic with the uploaded file
 		console.log("File uploaded:", file);
+		if (!file) {
+			alert("Please upload a file to continue");
+			return;
+		}
+		localStorage.setItem("file", file);
+		return navigate("/home/play-quiz");
 	};
 
 	return (
@@ -45,48 +50,5 @@ export default function GenQuiz() {
 				</p>
 			</footer>
 		</div>
-	);
-}
-
-// Your Icon components (BrainIcon, UploadIcon, UserIcon)
-
-function UploadIcon(props) {
-	return (
-		<svg
-			{...props}
-			xmlns="http://www.w3.org/2000/svg"
-			width="24"
-			height="24"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			strokeWidth="2"
-			strokeLinecap="round"
-			strokeLinejoin="round"
-		>
-			<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-			<polyline points="17 8 12 3 7 8" />
-			<line x1="12" x2="12" y1="3" y2="15" />
-		</svg>
-	);
-}
-
-function UserIcon(props) {
-	return (
-		<svg
-			{...props}
-			xmlns="http://www.w3.org/2000/svg"
-			width="24"
-			height="24"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			strokeWidth="2"
-			strokeLinecap="round"
-			strokeLinejoin="round"
-		>
-			<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-			<circle cx="12" cy="7" r="4" />
-		</svg>
 	);
 }

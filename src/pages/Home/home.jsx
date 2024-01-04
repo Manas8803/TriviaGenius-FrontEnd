@@ -6,11 +6,10 @@ import { isLoggedIn } from "../../utils/Auth";
 
 export async function homeLoader({ request }) {
 	await isLoggedIn(request);
-	console.log("Fetch Intialiazed!");
-	return "THIS IS HOME PAGE";
+	return "";
 }
 
-export default function Component() {
+export default function Home() {
 	return (
 		<div
 			key="1"

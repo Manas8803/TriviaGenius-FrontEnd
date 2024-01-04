@@ -22,7 +22,10 @@ import {
 	Register,
 	action as registerAction,
 } from "./pages/Login-Register/register";
-import GenQuiz from "./pages/pdfquiz/genquiz";
+import GenQuiz, { loader as genQuizLoader } from "./pages/Gen-Quiz/genquiz";
+import PlayQuiz, {
+	loader as playQuizLoader,
+} from "./pages/Play-Quiz/play-quiz";
 
 const router = createBrowserRouter(
 	createRoutesFromElements(
@@ -37,8 +40,12 @@ const router = createBrowserRouter(
 			<Route path="/register" element={<Register />} action={registerAction} />
 			<Route path="/home" element={<Layout />}>
 				<Route index element={<Home />} loader={homeLoader} />
-				<Route path="gen-quiz" element={<GenQuiz />} />
-				<Route path="create-quiz" element={<GenQuiz />} />
+				<Route path="gen-quiz" element={<GenQuiz />} loader={genQuizLoader} />
+				<Route
+					path="play-quiz"
+					element={<PlayQuiz />}
+					loader={playQuizLoader}
+				/>
 			</Route>
 		</>
 	)

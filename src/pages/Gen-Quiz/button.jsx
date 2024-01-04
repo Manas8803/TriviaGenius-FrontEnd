@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import "../../styles/tailwind.css";
 
 const FileUploadButton = ({ label, onFileUpload }) => {
 	const [isModalOpen, setModalOpen] = useState(false);
@@ -9,7 +10,6 @@ const FileUploadButton = ({ label, onFileUpload }) => {
 	};
 
 	const handleFileUpload = (event) => {
-		// Perform any necessary file upload logic here
 		const uploadedFile = event.target.files[0];
 		onFileUpload(uploadedFile);
 		setModalOpen(false);
@@ -22,13 +22,18 @@ const FileUploadButton = ({ label, onFileUpload }) => {
 			</button>
 
 			{isModalOpen && (
-				<div className="modal">
-					<div className="modal-content">
-						<span className="close" onClick={() => setModalOpen(false)}>
-							&times;
-						</span>
-						<input type="file" onChange={handleFileUpload} />
-					</div>
+				<div className="flex flex-row items-center justify-center">
+					<span
+						className="close flex ml-auto"
+						onClick={() => setModalOpen(false)}
+					>
+						&times;
+					</span>
+					<input
+						type="file"
+						className="flex ml-auto"
+						onChange={handleFileUpload}
+					/>
 				</div>
 			)}
 		</div>
